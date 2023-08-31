@@ -23,15 +23,68 @@ cd HAE
 
 - Dependencies:  
 We recommend running this repository using [Anaconda](https://docs.anaconda.com/anaconda/install/). 
-All dependencies for defining the environment are provided in `environment/environment.yaml`.
+All dependencies for defining the environment are provided in `/HAE/hae/environment/hae_env.yaml`.
 
 
-### Pretrained pSp
-Here, we use pSp to find the latent code of real images in the latent domain of a pretrained StyleGAN generator. Follow the [instructions](https://github.com/eladrich/pixel2style2pixel.git) to train a pSp model firsly. Or you can also directly download the [pSp pre-trained models](https://drive.google.com/drive/folders/1gTSghHGuwoj9gKsLc2bcUNF6ioFBpRWB?usp=sharing) we provide.
+### Pre-trained Models
+Then download the pre-trained models we provide from [Google Drive](https://drive.google.com/drive/folders/18zMfAEjd4JLsjQM78ky2GmHsolV7OJ_x?usp=share_link)
+
+Then put the pre-trained models under `/HAE/hae/pretrained_models`
 
 
 ## Training
 ### Preparing your Data
+Related datasets can be downloaded at:
+https://github.com/bcmi/Awesome-Few-Shot-Image-Generation
+
+After downloading the pre-trained models and datasets, change the corresponding path
+at `/Codes/hae/configs/paths_config.py`
+
+### Train
+Go to the path to HAE:
+
+``` cd /PATH_TO/HAE/hae``` 
+
+
+Then you can train the model using:
+``` 
+python scripts/train.py \
+--dataset_type=flowers_encode_eva \
+--psp_checkpoint_path=/PATH_TO/psp_flowers.pt \
+--exp_dir=OUTPUT_PATH \
+--feature_size=512 \
+--workers=8 \
+--batch_size=8 \
+--test_batch_size=8 \
+--test_workers=8 \
+--val_interval=80000 \
+--save_interval=5000 \
+--encoder_type=GradualStyleEncoder \
+--start_from_latent_avg \
+--lpips_lambda=1 \
+--l2_lambda=1 \
+--image_interval=1000 \
+--hyperbolic_lambda=0.3 \
+--reverse_lambda=1
+``` 
+### Inference
+Inference the images using:
+``` 
+python scripts/inference.py \
+--exp_dir=OUTPUT_PATH \
+--checkpoint_path=/PATH_TO/hae_flowers.pt \
+--data_path=PATH_TO/flowers_eva/test \
+--test_batch_size=4 \
+--test_workers=4
+```
+
+## Visualization
+
+Please see the comments in the notebook:
+
+`Interpolation & Perturbation.ipynb`
+and
+`UMAP_Visualization.ipynb`
 
 
 ## Citation
