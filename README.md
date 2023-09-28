@@ -82,6 +82,8 @@ python scripts/inference.py \
 --test_workers=4
 ```
 
+![image](./assets/generation.png)
+
 ## Visualization
 
 Please see the comments in the notebook:
