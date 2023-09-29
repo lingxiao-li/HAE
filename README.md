@@ -98,10 +98,12 @@ and
 If you use this code for your research, please cite our paper <a href="https://arxiv.org/abs/2211.12347">The Euclidean Space is Evil: Hyperbolic Attribute Editing for Few-shot Image Generation</a>:
 
 ```
-@inproceedings{li2023hae,
-  title={The Euclidean Space is Evil: Hyperbolic Attribute Editing for Few-shot Image Generation},
-  author={Li, Lingxiao and Zhang, Yi and Wang, Shuhui},
-  booktitle=ICCV,
-  year={2023},
+@InProceedings{Li_2023_HAE,
+    author    = {Li, Lingxiao and Zhang, Yi and Wang, Shuhui},
+    title     = {The Euclidean Space is Evil: Hyperbolic Attribute Editing for Few-shot Image Generation},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {22714-22724}
 }
 ```
